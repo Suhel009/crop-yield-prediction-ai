@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Crop Yield Intelligence | AI-Powered Agriculture</title>
+    <meta name="description" content="Explore data-driven crop yield estimates using agricultural and environmental features with a machine learning model.">
+    <meta name="theme-color" content="#073b2b">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🌱
+            </div>
+
+            <div>
+                <h1>Crop Yield</h1>
+                <h1>Prediction</h1>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="#home" class="nav-item active">
+                <span>⌂</span>
+                <span>Home</span>
+            </a>
+
+            <a href="#predict" class="nav-item">
+                <span>⌁</span>
+                <span>Predict Yield</span>
+            </a>
+
+            <a href="#history" class="nav-item">
+                <span>◷</span>
+                <span>History</span>
+            </a>
+
+            <a href="#about" class="nav-item">
+                <span>ⓘ</span>
+                <span>About Project</span>
+            </a>
+
+            <a href="#how-it-works" class="nav-item">
+                <span>⚙</span>
+                <span>How It Works</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Smart prediction card -->
+
+        <div class="smart-card">
+
+            <div class="smart-icon">
+                🌿
+            </div>
+
+            <h3>Smart Predictions</h3>
+
+            <h3>Better Farming</h3>
+
+            <h3>Higher Yields</h3>
+
+            <p>
+                Leverage machine learning to make
+                data-driven decisions for your crops.
+            </p>
+
+        </div>
+
+
+        <div class="sidebar-footer">
+
+            <p>© 2026 Crop Yield Prediction</p>
+
+            <p>All rights reserved.</p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content" id="home">
+
+
+        <!-- Hero -->
+
+        <section class="hero">
+
+            <div class="hero-icon">
+                🌾
+            </div>
+
+            <div class="hero-content">
+
+                <div class="model-badge">
+                    🤖 ML Model: Tuned Random Forest
+                </div>
+                <div class="api-status" id="apiStatus" role="status" aria-live="polite">Checking prediction service…</div>
+
+                <h2>
+                    Predict Crop Yield<br>
+                    with Machine Learning
+                </h2>
+
+                <p>
+                    Get intelligent crop yield predictions based
+                    on agricultural and environmental factors.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="stats-strip" aria-label="Dataset overview">
+            <article class="stat-card"><span class="stat-label">Training records</span><strong id="datasetRecords">—</strong><small>cleaned observations</small></article>
+            <article class="stat-card"><span class="stat-label">Crop varieties</span><strong id="datasetCrops">—</strong><small>available in dataset</small></article>
+            <article class="stat-card"><span class="stat-label">States / regions</span><strong id="datasetStates">—</strong><small>represented in data</small></article>
+            <article class="stat-card"><span class="stat-label">Year coverage</span><strong id="datasetYears">—</strong><small>historical records</small></article>
+            <article class="stat-card quality-stat"><span class="stat-label">Yield consistency check</span><strong id="datasetConsistency">—</strong><small>records matching Production ÷ Area within 5%</small></article>
+        </section>
+
+        <!-- ================= PREDICTION AREA ================= -->
+
+        <section class="prediction-section" id="predict">
+
+
+            <!-- INPUT CARD -->
+
+            <div class="input-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <span class="heading-icon">▥</span>
+
+                        <span>Input Parameters</span>
+                    </div>
+
+                </div>
+
+
+                <form id="predictionForm">
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Year -->
+
+                        <div class="form-group">
+
+                            <label for="year">
+                                Year
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    📅
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="year"
+                                    value="2025"
+                                    min="2000"
+                                    max="2026"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Rainfall -->
+
+                        <div class="form-group">
+
+                            <label for="rainfall">
+                                Annual Rainfall (mm)
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    ☁
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="rainfall"
+                                    value="1000"
+                                    min="0"
+                                    step="any"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- State -->
+
+                        <div class="form-group">
+
+                            <label for="state">
+                                State
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    📍
+                                </span>
+
+                                <select id="state" required>
+
+                                    <option value="">
+                                        Select State
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Fertilizer -->
+
+                        <div class="form-group">
+
+                            <label for="fertilizer">
+                                Fertilizer (total kg)
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    🧪
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="fertilizer"
+                                    value="50000"
+                                    min="0"
+                                    step="any"
+                                    required
+                                >
+
+                            </div>
+                            <small class="field-help">Total fertilizer used across the entered crop area, in kilograms (kg), not kg/ha.</small>
+
+                        </div>
+
+
+                        <!-- Crop -->
+
+                        <div class="form-group">
+
+                            <label for="crop">
+                                Crop
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    🌱
+                                </span>
+
+                                <select id="crop" required>
+
+                                    <option value="">
+                                        Select Crop
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Pesticide -->
+
+                        <div class="form-group">
+
+                            <label for="pesticide">
+                                Pesticide (total kg)
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    ⚗
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="pesticide"
+                                    value="100"
+                                    min="0"
+                                    step="any"
+                                    required
+                                >
+
+                            </div>
+                            <small class="field-help">Total pesticide used across the entered crop area, in kilograms (kg). For liquids, use kg only when the product mass is known; do not treat litres as kg.</small>
+
+                        </div>
+
+
+                        <!-- Season -->
+
+                        <div class="form-group">
+
+                            <label for="season">
+                                Season
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <span class="input-icon">
+                                    🌿
+                                </span>
+
+                                <select id="season" required>
+
+                                    <option value="">
+                                        Select Season
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Cultivated area -->
+
+                        <div class="form-group">
+
+                            <label for="area">
+                                Cultivated Area
+                            </label>
+
+                            <div class="unit-input-row">
+                                <div class="input-wrapper area-number">
+                                    <span class="input-icon">▥</span>
+                                    <input
+                                        type="number"
+                                        id="area"
+                                        value="1000"
+                                        min="0.01"
+                                        step="any"
+                                        required
+                                    >
+                                </div>
+                                <select id="areaUnit" class="unit-select" aria-label="Area unit">
+                                    <option value="hectare" selected>Hectares (ha)</option>
+                                    <option value="acre">Acres</option>
+                                </select>
+                            </div>
+                            <small class="field-help">Acres are automatically converted to hectares. Bigha varies by region; convert your local bigha to hectares before entering it.</small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="compare-picker">
+                        <label for="compareCrops">Compare crops (select 2–8)</label>
+                        <select id="compareCrops" multiple size="5" aria-describedby="compareHelp">
+                        </select>
+                        <small id="compareHelp">Hold Ctrl (Windows) or Command (Mac) to select multiple crops. Coconut is kept separate because its physical yield unit is not verified in this source.</small>
+                    </div>
+
+                    <!-- Predict Button -->
+
+                    <button
+                        type="submit"
+                        class="predict-btn"
+                        id="predictBtn"
+                    >
+
+                        <span>⌁</span>
+
+                        <span>Predict Yield</span>
+
+                    </button>
+
+
+                    <button type="button" class="compare-btn" id="compareBtn">Compare Selected Crops</button>
+
+                    <div class="secure-note">
+                        ✓ Your inputs are used only for prediction
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- ================= RESULT CARD ================= -->
+
+            <div class="result-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <span class="heading-icon">↗</span>
+
+                        <span>Prediction Result</span>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="result"
+                    class="result-container"
+                >
+
+                    <div class="result-circle">
+
+                        <div class="plant-icon">
+                            🌱
+                        </div>
+
+                        <div class="yield-value">
+                            —
+                        </div>
+
+                        <div class="yield-unit">
+                            Predicted Yield
+                        </div>
+
+                    </div>
+
+
+                    <h3>
+                        Predicted Crop Yield
+                    </h3>
+
+
+                    <div class="result-info">
+
+                        <span>💡</span>
+
+                        <p>
+                            Enter the agricultural parameters
+                            and click Predict Yield to get the
+                            machine learning prediction.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section class="features">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon green">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h3>High Accuracy</h3>
+
+                    <p>
+                        Tuned machine learning model
+                        trained on agricultural data.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue">
+                    🛡
+                </div>
+
+                <div>
+
+                    <h3>Data Driven</h3>
+
+                    <p>
+                        Predictions based on multiple
+                        agricultural factors.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon orange">
+                    ◷
+                </div>
+
+                <div>
+
+                    <h3>Fast & Reliable</h3>
+
+                    <p>
+                        Get prediction results
+                        within seconds.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple">
+                    🌿
+                </div>
+
+                <div>
+
+                    <h3>Better Decisions</h3>
+
+                    <p>
+                        Make informed farming
+                        decisions using data.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <section class="history-section" id="history">
+            <div class="history-heading">
+                <div>
+                    <span class="section-tag">YOUR RECENT ACTIVITY</span>
+                    <h2>Prediction History</h2>
+                </div>
+                <button type="button" class="text-btn" id="clearHistoryBtn">Clear history</button>
+            </div>
+            <div class="history-list" id="predictionHistory">
+                <p class="history-empty">Your recent predictions will appear here on this device.</p>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT ================= -->
+
+        <section
+            class="about-section"
+            id="about"
+        >
+
+            <div>
+
+                <span class="section-tag">
+                    ABOUT PROJECT
+                </span>
+
+                <h2>
+                    Smart Crop Yield Prediction
+                </h2>
+
+                <p>
+                    This project uses machine learning algorithms
+                    to estimate crop yield from historical agricultural
+                    and environmental data.
+                </p>
+
+            </div>
+
+
+            <div
+                class="about-box"
+                id="how-it-works"
+            >
+
+                <h3>
+                    How It Works
+                </h3>
+
+                <div class="steps">
+
+                    <div>
+                        <b>01</b>
+                        <span>Enter crop information</span>
+                    </div>
+
+                    <div>
+                        <b>02</b>
+                        <span>Submit agricultural parameters</span>
+                    </div>
+
+                    <div>
+                        <b>03</b>
+                        <span>ML model processes the data</span>
+                    </div>
+
+                    <div>
+                        <b>04</b>
+                        <span>Receive predicted yield</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+
+        <footer>
+
+            Built with ❤️ using Machine Learning
+            & Modern Web Technologies
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script>
+    window.CROP_YIELD_API_URL = "http://127.0.0.1:5000";
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
